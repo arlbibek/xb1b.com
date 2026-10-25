@@ -3,7 +3,6 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main className="landing">
-      <div className="landing__glow landing__glow--a" aria-hidden="true" />
       <div className="relative z-10 text-center px-6">
         <p className="text-sm tracking-[0.3em] uppercase text-white/50 mb-4">
           404

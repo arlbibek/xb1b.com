@@ -3,7 +3,8 @@ import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Bibek Aryal",
-  description: "Bibek Aryal",
+  description:
+    "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
   metadataBase: new URL("https://bibeka.com.np"),
   manifest: "/manifest.json",
   authors: [{ name: "Bibek Aryal" }],
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://bibeka.com.np",
     title: "Bibek Aryal",
+    description:
+      "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
+    images: ["/images/repository-open-graph-template.png"],
   },
   icons: {
     icon: "/images/favicon.ico",
@@ -24,7 +28,6 @@ export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: "cover",
 };
 

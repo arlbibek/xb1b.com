@@ -8,7 +8,6 @@ export default function Error({
 }) {
   return (
     <main className="landing">
-      <div className="landing__glow landing__glow--b" aria-hidden="true" />
       <div className="relative z-10 text-center px-6">
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-8">
           Something went wrong

@@ -2,19 +2,19 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "Bibek Aryal",
   "short_name": "Bibek Aryal",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "description": "Bibek Aryal",
   "icons": [
     {
-      "src": "images/touch/homescreen96.png",
+      "src": "/images/favicon.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "images/plants-192x129.png",
+      "src": "/images/plants-192x129.png",
       "sizes": "192x192",
       "type": "image/png"
     }

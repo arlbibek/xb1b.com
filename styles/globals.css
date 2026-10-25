@@ -40,7 +40,6 @@ body {
   height: 100dvh;
   height: 100svh;
   overflow: hidden;
-  cursor: none;
   background:
     radial-gradient(
       ellipse 120% 80% at 50% 120%,
@@ -158,11 +157,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90vw;
-  height: 85dvh;
-  height: 85svh;
+  width: 84vw;
+  height: 78dvh;
+  height: 78svh;
   font-weight: 700;
-  font-size: min(22vw, 38vh);
+  font-size: min(18vw, 30vh);
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-align: center;
@@ -377,7 +376,7 @@ body {
     infinite;
   animation-delay: var(--twinkle-delay, 0s);
   filter: drop-shadow(
-    0 0 10px color-mix(in srgb, var(--fg) 55%, transparent)
+    0 0 12px color-mix(in srgb, var(--fg) 65%, transparent)
   );
   will-change: opacity;
 }
@@ -385,6 +384,98 @@ body {
 .landing-floating-icon-glow svg {
   width: 100%;
   height: 100%;
+}
+
+/* Skill solar system — orbits of skill planets around the name (galaxy core) */
+.skill-system {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  /* Center is the galaxy core (the name) — fade orbits out there so
+     skill labels dive behind it instead of overlapping the type */
+  mask-image: radial-gradient(
+    ellipse 80% 74% at 50% 50%,
+    transparent 0%,
+    transparent 34%,
+    black 62%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 74% at 50% 50%,
+    transparent 0%,
+    transparent 34%,
+    black 62%
+  );
+}
+
+.skill-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Elliptical ring: height = orbit size, width stretched (major axis).
+     --orbit-stretch is set from TS (ORBIT_STRETCH) — keep in sync. */
+  width: calc(var(--orbit-size, 100vmin) * var(--orbit-stretch, 1.3));
+  height: var(--orbit-size, 100vmin);
+  margin-left: calc(
+    var(--orbit-size, 100vmin) * var(--orbit-stretch, 1.3) / -2
+  );
+  margin-top: calc(var(--orbit-size, 100vmin) / -2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.skill-orbit--inner {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 24px rgba(167, 139, 250, 0.08);
+}
+
+.skill-node-pos {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  /* transform driven by rAF (translate to ellipse point + tangent rotate) */
+  will-change: transform;
+}
+
+.skill-node {
+  position: relative;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+/* Text-only constellation label, centered on its orbit point */
+.skill-node-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.skill-orbit--inner .skill-node-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Crowded on small screens — outer shells hide, inner text shrinks */
+@media (max-width: 640px) {
+  .skill-orbit--outer .skill-node-pos {
+    display: none;
+  }
+  .skill-node-text {
+    font-size: 9px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

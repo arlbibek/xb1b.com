@@ -556,7 +556,8 @@ function buildFloatingIcons(seeds: IconSeed[]): FloatingIconSpec[] {
     const driftY = between(index, 9, -12, -5);
     const duration = between(index, 10, 42, 64);
     const delay = between(index, 11, 0, 10);
-    const twinkle = hash01(index, 12) > 0.62;
+    // Most of the field glows — ~70% twinkle like lit stars.
+    const twinkle = hash01(index, 12) > 0.3;
     const twinkleDuration = between(index, 13, 12, 22);
     const twinkleDelay = between(index, 14, 0, 18);
     // Keep denser field on mobile; hide only the smallest extras.

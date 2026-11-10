@@ -346,48 +346,59 @@ body {
   }
 }
 
-/* Foot and head links share one quiet voice: small, wide-tracked caps. */
-.contact,
-.projects {
+/* Foot of the sky — projects, then the email. One row in landscape; the
+   email drops to its own row in portrait, where width is the scarce axis. */
+.foot {
   position: absolute;
   left: 0;
   right: 0;
+  bottom: max(env(safe-area-inset-bottom), 2.5svh);
   z-index: 3;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  column-gap: clamp(0.5rem, 5vw, 4rem);
 }
 
-.contact {
-  top: max(env(safe-area-inset-top), 2.5svh);
-  gap: clamp(0.75rem, 4vw, 2.5rem);
-}
-
-/* Projects — two named stars at the foot of the sky */
+/* Projects — two named stars */
 .projects {
-  bottom: max(env(safe-area-inset-bottom), 2.5svh);
+  display: flex;
+  justify-content: center;
   gap: clamp(0.5rem, 5vw, 4rem);
 }
 
-.contact__link,
+.foot__email,
 .projects__link {
   position: relative;
   min-height: 44px;
   padding: 0 0.75rem;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
   text-decoration: none;
   border-radius: 4px;
   transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.contact__link {
+.projects__link {
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+/* An address reads as an address in lowercase; quieter than the projects. */
+.foot__email {
   display: inline-flex;
   align-items: center;
-  /* Balances the trailing letter-space so the label sits centred */
-  text-indent: 0.26em;
+  justify-content: center;
+  font-weight: 400;
+  letter-spacing: 0.16em;
   color: rgba(var(--mw-mist), 0.56);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .foot__email {
+    flex-basis: 100%;
+  }
 }
 
 .projects__link {
@@ -450,8 +461,8 @@ body {
   }
 }
 
-.contact__link:hover,
-.contact__link:focus-visible,
+.foot__email:hover,
+.foot__email:focus-visible,
 .projects__link:hover,
 .projects__link:focus-visible {
   color: #fff;
@@ -477,7 +488,7 @@ body {
   }
 }
 
-.contact__link:focus-visible,
+.foot__email:focus-visible,
 .projects__link:focus-visible {
   outline: 1px solid rgba(var(--mw-violet), 0.8);
   outline-offset: 2px;
@@ -525,7 +536,7 @@ body {
     opacity: calc((var(--lo, 0.05) + var(--hi, 0.5)) * 0.4);
   }
 
-  .contact__link,
+  .foot__email,
   .projects__link,
   .projects__star,
   .projects__note {

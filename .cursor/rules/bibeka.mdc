@@ -4,7 +4,8 @@
 
 - Personal site at xb1b.com (formerly bibeka.com.np): single viewport-locked landing page with name "BIBEK / ARYAL".
 - Two projects are linked, quietly, at the foot of the page: tithi.xb1b.com and brahma.xb1b.com. They are separate deployments.
-- Contact is two plain links at the head of the page: GitHub and contact@xb1b.com.
+- Contact is the email only (contact@xb1b.com), at the foot with the projects. No GitHub link on the page.
+- Owner facts for SEO/GEO live in `lib/site.ts`; keep them true.
 - No backend, no database, no Supabase, no auth, no forms unless explicitly requested.
 - Do not reintroduce `/projects`, `/echo`, `/click`, or similar multi-page portfolio features without an explicit ask.
 

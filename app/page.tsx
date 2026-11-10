@@ -1,74 +1,83 @@
-import type { Metadata } from "next";
-import ContactLinks from "@/components/ContactLinks";
 import LandingFloatingIcons from "@/components/LandingFloatingIcons";
 import ProjectLinks from "@/components/ProjectLinks";
+import {
+  EMAIL,
+  EXPERTISE,
+  PROJECTS,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_SUMMARY,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Bibek Aryal",
-  description:
-    "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-  openGraph: {
-    title: "Bibek Aryal",
-    description:
-      "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-    url: "https://xb1b.com",
-    type: "website",
-  },
-};
+const PERSON_ID = `${SITE_URL}/#person`;
 
-const SITE = "https://xb1b.com";
-
-/** Tells search engines who this is; the page itself is nearly textless. */
+/**
+ * The page is nearly textless, so this graph is what tells search engines and
+ * LLM crawlers who it is about. Facts come from `lib/site.ts` only.
+ */
 const JSON_LD = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": `${SITE}/#website`,
-      url: SITE,
-      name: "Bibek Aryal",
-      publisher: { "@id": `${SITE}/#person` },
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      inLanguage: "en",
+      publisher: { "@id": PERSON_ID },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${SITE_URL}/#profile`,
+      url: SITE_URL,
+      name: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      inLanguage: "en",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": PERSON_ID },
+      mainEntity: { "@id": PERSON_ID },
+      primaryImageOfPage: `${SITE_URL}/images/og.png`,
     },
     {
       "@type": "Person",
-      "@id": `${SITE}/#person`,
-      name: "Bibek Aryal",
-      url: SITE,
-      email: "contact@xb1b.com",
-      image: `${SITE}/images/og.png`,
-      description:
-        "Cybersecurity, GRC, ISO/IEC 27001, cloud and DevOps practitioner.",
+      "@id": PERSON_ID,
+      name: SITE_NAME,
+      givenName: "Bibek",
+      familyName: "Aryal",
+      url: SITE_URL,
+      mainEntityOfPage: { "@id": `${SITE_URL}/#profile` },
+      email: `mailto:${EMAIL}`,
+      image: `${SITE_URL}/images/og.png`,
+      description: SITE_SUMMARY,
+      jobTitle: "Co-Founder",
+      worksFor: {
+        "@type": "Organization",
+        name: "Trinity Technology",
+        url: "https://trinitytech.com.np",
+      },
+      knowsAbout: EXPERTISE,
       sameAs: ["https://github.com/arlbibek"],
-      knowsAbout: [
-        "Cybersecurity",
-        "Governance, Risk and Compliance",
-        "ISO/IEC 27001",
-        "IT Audit",
-        "VAPT",
-        "Cloud Infrastructure",
-        "DevOps",
-      ],
     },
-    {
+    ...PROJECTS.map((p) => ({
       "@type": "WebApplication",
-      name: "Tithi",
-      url: "https://tithi.xb1b.com",
-      description: "Reminders for events by BS date and tithi.",
-      author: { "@id": `${SITE}/#person` },
-    },
-    {
-      "@type": "WebApplication",
-      name: "Brahma",
-      url: "https://brahma.xb1b.com",
-      description: "Vedic daily companion.",
-      author: { "@id": `${SITE}/#person` },
-    },
+      "@id": `${p.href}/#app`,
+      name: p.name,
+      url: p.href,
+      description: p.description,
+      applicationCategory: p.category,
+      operatingSystem: "Any (web browser)",
+      author: { "@id": PERSON_ID },
+      creator: { "@id": PERSON_ID },
+    })),
   ],
 };
 
 export default function Home() {
   return (
-    <main className="landing" aria-label="Bibek Aryal">
+    <main className="landing" aria-label={SITE_NAME}>
       <script
         type="application/ld+json"
         // Static, author-controlled object; "<" escaped so it cannot close the tag.
@@ -83,12 +92,15 @@ export default function Home() {
         <div className="landing__milkyway-dust landing__milkyway-dust--b" />
         <div className="landing__milkyway-dust landing__milkyway-dust--c" />
       </div>
+      {/* The space keeps the heading "Bibek Aryal", not "BIBEKARYAL", for
+          crawlers and screen readers; the spans are blocks so it never shows. */}
       <h1 className="landing__name">
-        <span>BIBEK</span>
-        <span>ARYAL</span>
+        <span>Bibek</span> <span>Aryal</span>
       </h1>
+      {/* The sky is decorative and hidden from assistive tech, so this is the
+          page's only prose: who this is, for screen readers and crawlers. */}
+      <p className="sr-only">{SITE_SUMMARY}</p>
       <LandingFloatingIcons />
-      <ContactLinks />
       <ProjectLinks />
     </main>
   );

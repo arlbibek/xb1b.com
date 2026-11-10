@@ -1,30 +1,58 @@
 import "../styles/globals.css";
 import type { Metadata, Viewport } from "next";
+import {
+  EXPERTISE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/site";
+
+const OG_IMAGE = {
+  url: "/images/og.png",
+  width: 1200,
+  height: 630,
+  alt: SITE_NAME,
+};
 
 export const metadata: Metadata = {
-  title: "Bibek Aryal",
-  description:
-    "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-  metadataBase: new URL("https://xb1b.com"),
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: `%s — ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  keywords: [SITE_NAME, "xb1b", "Tithi", "Brahma", ...EXPERTISE],
   alternates: { canonical: "/" },
   manifest: "/manifest.json",
-  authors: [{ name: "Bibek Aryal" }],
-  keywords: ["Bibek Aryal", "xb1b", "Cybersecurity", "GRC", "ISO 27001"],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    siteName: "Bibek Aryal",
-    type: "website",
-    url: "https://xb1b.com",
-    title: "Bibek Aryal",
-    description:
-      "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-    images: [{ url: "/images/og.png", width: 1200, height: 630, alt: "Bibek Aryal" }],
+    siteName: SITE_NAME,
+    type: "profile",
+    firstName: "Bibek",
+    lastName: "Aryal",
+    locale: "en_US",
+    url: SITE_URL,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bibek Aryal",
-    description:
-      "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-    images: ["/images/og.png"],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
   icons: {
     icon: [

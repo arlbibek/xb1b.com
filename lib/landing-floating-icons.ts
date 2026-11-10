@@ -239,10 +239,10 @@ const HI: Record<Magnitude, [number, number]> = {
 
 /**
  * Keep stars out of the core the name covers in every aspect ratio, and out
- * of the strips at the head and foot where the links sit.
+ * of the strip at the foot where the links sit.
  */
 function inCore(x: number, y: number): boolean {
-  if ((y > 86 || y < 9) && x > 8 && x < 92) return true;
+  if (y > 84 && x > 8 && x < 92) return true;
   const dx = (x - 50) / 30;
   const dy = (y - 50) / 13;
   return dx * dx + dy * dy < 1;

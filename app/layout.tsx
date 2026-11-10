@@ -5,22 +5,25 @@ export const metadata: Metadata = {
   title: "Bibek Aryal",
   description:
     "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-  metadataBase: new URL("https://bibeka.com.np"),
+  metadataBase: new URL("https://xb1b.com"),
   manifest: "/manifest.json",
   authors: [{ name: "Bibek Aryal" }],
-  keywords: ["Bibek", "Aryal", "bibeka.com.np"],
+  keywords: ["Bibek", "Aryal", "xb1b.com"],
   openGraph: {
     siteName: "Bibek Aryal",
     type: "website",
-    url: "https://bibeka.com.np",
+    url: "https://xb1b.com",
     title: "Bibek Aryal",
     description:
       "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-    images: ["/images/repository-open-graph-template.png"],
+    images: [{ url: "/images/og.png", width: 1200, height: 630, alt: "Bibek Aryal" }],
   },
   icons: {
-    icon: "/images/favicon.ico",
-    apple: "/images/favicon.png",
+    icon: [
+      { url: "/images/favicon.ico", sizes: "48x48" },
+      { url: "/images/favicon.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: "/images/apple-touch-icon.png",
   },
 };
 

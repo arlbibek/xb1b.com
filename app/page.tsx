@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LandingFloatingIcons from "@/components/LandingFloatingIcons";
-import SkillOrbits from "@/components/SkillOrbits";
+import ProjectLinks from "@/components/ProjectLinks";
 
 export const metadata: Metadata = {
   title: "Bibek Aryal",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Bibek Aryal",
     description:
       "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
-    url: "https://bibeka.com.np",
+    url: "https://xb1b.com",
     type: "website",
   },
 };
@@ -30,7 +30,7 @@ export default function Home() {
         <span>ARYAL</span>
       </h1>
       <LandingFloatingIcons />
-      <SkillOrbits />
+      <ProjectLinks />
     </main>
   );
 }

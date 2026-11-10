@@ -1,8 +1,8 @@
-# bibeka.com.np
+# xb1b.com
 
-Personal site for [Bibek Aryal](https://bibeka.com.np/) — Next.js, deployed on Vercel.
+Personal site for [Bibek Aryal](https://xb1b.com/) — Next.js, deployed on Vercel.
 
-Single viewport landing: **BIBEK / ARYAL** on a black glowing gradient.
+Single viewport landing: **BIBEK / ARYAL** on a night sky whose stars are the tools I use, with quiet links to [Tithi](https://tithi.xb1b.com) and [Brahma](https://brahma.xb1b.com).
 
 ## Docs
 

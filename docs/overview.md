@@ -1,5 +1,5 @@
 # Overview
 
-Personal site for Bibek Aryal at [bibeka.com.np](https://bibeka.com.np).
+Personal site for Bibek Aryal at [xb1b.com](https://xb1b.com) (formerly bibeka.com.np).
 
-A single viewport-locked landing page: large white name on a black glowing gradient background. No backend, no database, no CMS.
+A single viewport-locked landing page: large white name on a night sky of twinkling tool icons, plus two quiet links to the projects [Tithi](https://tithi.xb1b.com) and [Brahma](https://brahma.xb1b.com). No backend, no database, no CMS.

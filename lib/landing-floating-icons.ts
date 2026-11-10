@@ -1,600 +1,313 @@
 import type { ComponentType, SVGProps } from "react";
-import {
-  Activity,
-  AlertTriangle,
-  Antenna,
-  BadgeAlert,
-  BadgeCheck,
-  Ban,
-  Binary,
-  Bluetooth,
-  BookLock,
-  Bot,
-  Boxes,
-  BrickWall,
-  Bug,
-  BugOff,
-  Cable,
-  Cctv,
-  CircleAlert,
-  ClipboardCheck,
-  Cloud,
-  Code2,
-  Container,
-  Cpu,
-  Crosshair,
-  Database,
-  Eye,
-  EyeOff,
-  FileCode2,
-  FileKey,
-  FileLock,
-  FileSearch,
-  Fingerprint,
-  Flame,
-  FlaskConical,
-  FolderKey,
-  FolderLock,
-  Gavel,
-  Globe,
-  HardDrive,
-  IdCard,
-  Key,
-  KeyRound,
-  KeySquare,
-  Laptop,
-  Layers,
-  Link2Off,
-  Lock,
-  LockKeyhole,
-  MailWarning,
-  MemoryStick,
-  MessageSquareLock,
-  Microscope,
-  Monitor,
-  MonitorDot,
-  Network,
-  Nfc,
-  OctagonAlert,
-  PackageCheck,
-  PackageX,
-  PcCase,
-  QrCode,
-  Radar,
-  Radio,
-  RadioTower,
-  Router,
-  Satellite,
-  SatelliteDish,
-  Scale,
-  Scan,
-  ScanFace,
-  ScanLine,
-  ScanSearch,
-  SearchCode,
-  Server,
-  Settings2,
-  Share2,
-  Shield,
-  ShieldAlert,
-  ShieldBan,
-  ShieldCheck,
-  ShieldEllipsis,
-  ShieldHalf,
-  ShieldOff,
-  ShieldPlus,
-  ShieldQuestion,
-  ShieldX,
-  Siren,
-  Skull,
-  Smartphone,
-  Target,
-  Terminal,
-  TriangleAlert,
-  Unlock,
-  Unplug,
-  Usb,
-  UserCog,
-  UserRoundCheck,
-  UserRoundX,
-  Vault,
-  Waypoints,
-  Webcam,
-  Wifi,
-  Workflow,
-  Wrench,
-  Zap,
-} from "lucide-react";
 import type { IconType } from "react-icons";
 import {
-  SiAnsible,
-  SiApache,
-  SiApachejmeter,
-  SiAuth0,
-  SiAuthelia,
+  SiAnthropic,
+  SiAnydesk,
   SiAuthentik,
-  SiAvast,
-  SiAvira,
-  SiBetterauth,
-  SiBitdefender,
-  SiBitwarden,
-  SiBroadcom,
+  SiAutohotkey,
   SiBurpsuite,
-  SiCaddy,
-  SiCisco,
+  SiClaude,
   SiCloudflare,
   SiCloudflareworkers,
-  SiConsul,
-  SiCryptomator,
-  SiDashlane,
-  SiDatadog,
+  SiCss,
+  SiCursor,
+  SiDavinciresolve,
   SiDebian,
   SiDocker,
-  SiDuckduckgo,
-  SiElastic,
-  SiElasticsearch,
-  SiElasticstack,
-  SiEnpass,
-  SiExpressvpn,
-  SiFidoalliance,
-  SiFirewalla,
-  SiFortinet,
-  SiFusionauth,
+  SiFedora,
+  SiFilezilla,
+  SiGit,
   SiGithub,
   SiGithubactions,
-  SiGitlab,
-  SiGo,
-  SiGoogleauthenticator,
-  SiGrafana,
-  SiHackerone,
-  SiHackthebox,
-  SiHashicorp,
-  SiHelm,
-  SiIstio,
-  SiJenkins,
-  SiJunipernetworks,
+  SiGmail,
+  SiGnubash,
+  SiGoogle,
+  SiGoogleappsscript,
+  SiGoogledrive,
+  SiGooglegemini,
+  SiHtml5,
+  SiJavascript,
+  SiJson,
   SiKalilinux,
-  SiKaspersky,
-  SiKeepassxc,
-  SiKeeper,
   SiKeycloak,
-  SiKubernetes,
-  SiLastpass,
   SiLetsencrypt,
-  SiLinkerd,
+  SiLinear,
   SiLinux,
-  SiMalwarebytes,
-  SiMetasploit,
-  SiMikrotik,
-  SiMongodb,
+  SiMariadb,
+  SiMarkdown,
+  SiMdx,
+  SiMetabase,
   SiMysql,
-  SiNewrelic,
+  SiNextdotjs,
   SiNginx,
   SiNginxproxymanager,
-  SiNomad,
-  SiNordvpn,
-  SiNorton,
-  SiOkta,
-  SiOpensearch,
-  SiOpenssl,
-  SiOpenvpn,
-  SiOpnsense,
+  SiNodedotjs,
+  SiNpm,
+  SiObsidian,
+  SiObsstudio,
+  SiOpenid,
+  SiOpenjdk,
   SiOwasp,
-  SiPacker,
-  SiPaloaltonetworks,
-  SiParrotsecurity,
-  SiPfsense,
+  SiPaperlessngx,
+  SiPihole,
+  SiPlex,
+  SiPortainer,
   SiPostgresql,
-  SiPostman,
-  SiPrometheus,
-  SiProtonmail,
-  SiProtonvpn,
   SiProxmox,
   SiPython,
-  SiQemu,
-  SiQualys,
+  SiRclone,
+  SiReact,
   SiRedhat,
-  SiRedis,
-  SiRust,
-  SiSecurityscorecard,
-  SiSentry,
-  SiSignal,
-  SiSnort,
-  SiSnyk,
-  SiSonarqubecloud,
-  SiSonarqubeserver,
-  SiSplunk,
-  SiSpringsecurity,
+  SiResend,
+  SiRustdesk,
+  SiSpeedtest,
   SiSqlite,
-  SiSwagger,
-  SiSymantec,
-  SiTerraform,
-  SiTorbrowser,
-  SiTorproject,
-  SiTraefikproxy,
-  SiTrendmicro,
-  SiTrivy,
-  SiTryhackme,
-  SiUbiquiti,
+  SiSupabase,
+  SiSyncthing,
+  SiTailscale,
+  SiTailwindcss,
+  SiTodoist,
+  SiTypescript,
   SiUbuntu,
-  SiVagrant,
-  SiVault,
+  SiUptimekuma,
   SiVaultwarden,
+  SiVercel,
+  SiVikunja,
   SiVirtualbox,
-  SiVirustotal,
   SiVmware,
-  SiWebauthn,
-  SiWireguard,
   SiWireshark,
-  SiYubico,
+  SiYoutube,
+  SiZoho,
 } from "react-icons/si";
 import {
-  EppIcon,
   Iso27001Icon,
   NmapIcon,
   PciDssIcon,
-  SuricataIcon,
-  UptimeKumaIcon,
-  WazuhIcon,
   ZabbixIcon,
 } from "@/components/icons/security-tools";
 
-export type IconTone = "gold" | "soft" | "muted";
+export type SkyIconComponent =
+  | IconType
+  | ComponentType<SVGProps<SVGSVGElement> & { size?: number | string }>;
 
-/** Lucide + react-icons both accept size/className; strokeWidth is Lucide-only. */
-export type FloatingIconComponent = ComponentType<
-  SVGProps<SVGSVGElement> & {
-    size?: number | string;
-    strokeWidth?: number;
-  }
->;
+/** Star magnitude: 1 = the few large bright ones, 3 = the many faint ones. */
+type Magnitude = 1 | 2 | 3;
 
-export type FloatingIconSpec = {
-  Icon: FloatingIconComponent | IconType;
-  top: string;
-  left: string;
+type IconSeed = { Icon: SkyIconComponent; mag: Magnitude };
+
+export type SkyIconSpec = {
+  Icon: SkyIconComponent;
+  mag: Magnitude;
+  /** Percent of the viewport. */
+  top: number;
+  left: number;
   size: number;
-  tone: IconTone;
-  opacityMin: number;
-  opacityMax: number;
+  /** Opacity while "out" and at the peak of the twinkle. */
+  lo: number;
+  hi: number;
   rotate: number;
   driftX: number;
   driftY: number;
-  duration: number;
-  delay: number;
-  /** Filled brand marks — skip Lucide strokeWidth. */
-  filled?: boolean;
-  twinkle?: boolean;
-  twinkleDuration?: number;
-  twinkleDelay?: number;
-  desktopOnly?: boolean;
+  driftDuration: number;
+  twinkleDuration: number;
+  /** Negative, so every star starts mid-cycle instead of in unison. */
+  twinkleDelay: number;
+  /** Faint extras dropped on small screens to keep the sky sparse. */
+  wideOnly: boolean;
 };
 
-type IconSeed = {
-  Icon: FloatingIconComponent | IconType;
-  filled?: boolean;
-};
+/**
+ * Only tools and technologies from `bibek - skills.md`. Brand marks come from
+ * Simple Icons; the four without one are authored in `components/icons`.
+ */
+const SEEDS: IconSeed[] = [
+  // Brightest — the everyday core
+  { Icon: SiLinux, mag: 1 },
+  { Icon: SiDocker, mag: 1 },
+  { Icon: SiCloudflare, mag: 1 },
+  { Icon: SiBurpsuite, mag: 1 },
+  { Icon: NmapIcon, mag: 1 },
+  { Icon: Iso27001Icon, mag: 1 },
+  { Icon: SiProxmox, mag: 1 },
+  { Icon: SiNextdotjs, mag: 1 },
+  { Icon: SiSupabase, mag: 1 },
+  { Icon: SiPython, mag: 1 },
 
-const TONES: IconTone[] = ["gold", "soft", "muted"];
+  // Mid
+  { Icon: SiKalilinux, mag: 2 },
+  { Icon: SiWireshark, mag: 2 },
+  { Icon: SiOwasp, mag: 2 },
+  { Icon: PciDssIcon, mag: 2 },
+  { Icon: SiUbuntu, mag: 2 },
+  { Icon: SiDebian, mag: 2 },
+  { Icon: SiGnubash, mag: 2 },
+  { Icon: SiNginx, mag: 2 },
+  { Icon: SiTailscale, mag: 2 },
+  { Icon: ZabbixIcon, mag: 2 },
+  { Icon: SiUptimekuma, mag: 2 },
+  { Icon: SiVercel, mag: 2 },
+  { Icon: SiGithub, mag: 2 },
+  { Icon: SiGithubactions, mag: 2 },
+  { Icon: SiPostgresql, mag: 2 },
+  { Icon: SiReact, mag: 2 },
+  { Icon: SiTailwindcss, mag: 2 },
+  { Icon: SiKeycloak, mag: 2 },
+  { Icon: SiVaultwarden, mag: 2 },
+  { Icon: SiPihole, mag: 2 },
+  { Icon: SiClaude, mag: 2 },
+  { Icon: SiObsidian, mag: 2 },
 
-/** Deterministic 0–1 hash from index (keeps SSR/client placements identical). */
-function hash01(n: number, salt = 0): number {
-  const x = Math.sin((n + 1) * 12.9898 + salt * 78.233) * 43758.5453;
-  return x - Math.floor(x);
-}
-
-function between(n: number, salt: number, min: number, max: number): number {
-  return min + hash01(n, salt) * (max - min);
-}
-
-const SECURITY_ICON_SEEDS: IconSeed[] = [
-  // Custom marks
-  { Icon: WazuhIcon, filled: true },
-  { Icon: ZabbixIcon, filled: true },
-  { Icon: EppIcon },
-  { Icon: NmapIcon },
-  { Icon: SuricataIcon },
-  { Icon: UptimeKumaIcon, filled: true },
-  { Icon: PciDssIcon },
-  { Icon: Iso27001Icon },
-
-  // Lucide — security concepts
-  { Icon: Shield },
-  { Icon: ShieldCheck },
-  { Icon: ShieldAlert },
-  { Icon: ShieldBan },
-  { Icon: ShieldOff },
-  { Icon: ShieldPlus },
-  { Icon: ShieldQuestion },
-  { Icon: ShieldX },
-  { Icon: ShieldHalf },
-  { Icon: ShieldEllipsis },
-  { Icon: Lock },
-  { Icon: LockKeyhole },
-  { Icon: Unlock },
-  { Icon: Key },
-  { Icon: KeyRound },
-  { Icon: KeySquare },
-  { Icon: Fingerprint },
-  { Icon: Eye },
-  { Icon: EyeOff },
-  { Icon: Scan },
-  { Icon: ScanFace },
-  { Icon: ScanLine },
-  { Icon: ScanSearch },
-  { Icon: SearchCode },
-  { Icon: Radar },
-  { Icon: Bug },
-  { Icon: BugOff },
-  { Icon: Skull },
-  { Icon: Ban },
-  { Icon: Crosshair },
-  { Icon: Target },
-  { Icon: Siren },
-  { Icon: AlertTriangle },
-  { Icon: TriangleAlert },
-  { Icon: CircleAlert },
-  { Icon: OctagonAlert },
-  { Icon: BadgeAlert },
-  { Icon: BadgeCheck },
-  { Icon: BrickWall },
-  { Icon: Vault },
-  { Icon: FileLock },
-  { Icon: FileKey },
-  { Icon: FileSearch },
-  { Icon: FileCode2 },
-  { Icon: FolderLock },
-  { Icon: FolderKey },
-  { Icon: BookLock },
-  { Icon: MessageSquareLock },
-  { Icon: MailWarning },
-  { Icon: IdCard },
-  { Icon: UserCog },
-  { Icon: UserRoundCheck },
-  { Icon: UserRoundX },
-  { Icon: Cctv },
-  { Icon: Webcam },
-  { Icon: QrCode },
-  { Icon: Microscope },
-  { Icon: FlaskConical },
-  { Icon: ClipboardCheck },
-  { Icon: Scale },
-  { Icon: Gavel },
-  { Icon: Network },
-  { Icon: Wifi },
-  { Icon: Router },
-  { Icon: Antenna },
-  { Icon: Radio },
-  { Icon: RadioTower },
-  { Icon: Satellite },
-  { Icon: SatelliteDish },
-  { Icon: Cable },
-  { Icon: Nfc },
-  { Icon: Usb },
-  { Icon: Bluetooth },
-  { Icon: Server },
-  { Icon: Database },
-  { Icon: HardDrive },
-  { Icon: Cpu },
-  { Icon: MemoryStick },
-  { Icon: PcCase },
-  { Icon: Monitor },
-  { Icon: MonitorDot },
-  { Icon: Laptop },
-  { Icon: Smartphone },
-  { Icon: Terminal },
-  { Icon: Binary },
-  { Icon: Code2 },
-  { Icon: Container },
-  { Icon: Layers },
-  { Icon: Boxes },
-  { Icon: PackageCheck },
-  { Icon: PackageX },
-  { Icon: Cloud },
-  { Icon: Globe },
-  { Icon: Share2 },
-  { Icon: Link2Off },
-  { Icon: Unplug },
-  { Icon: Waypoints },
-  { Icon: Workflow },
-  { Icon: Activity },
-  { Icon: Bot },
-  { Icon: Flame },
-  { Icon: Zap },
-  { Icon: Settings2 },
-  { Icon: Wrench },
-
-  // Simple Icons — security tools / platforms
-  { Icon: SiBurpsuite, filled: true },
-  { Icon: SiKalilinux, filled: true },
-  { Icon: SiMetasploit, filled: true },
-  { Icon: SiOwasp, filled: true },
-  { Icon: SiWireshark, filled: true },
-  { Icon: SiSnort, filled: true },
-  { Icon: SiTrivy, filled: true },
-  { Icon: SiSnyk, filled: true },
-  { Icon: SiSonarqubecloud, filled: true },
-  { Icon: SiSonarqubeserver, filled: true },
-  { Icon: SiQualys, filled: true },
-  { Icon: SiVirustotal, filled: true },
-  { Icon: SiSecurityscorecard, filled: true },
-  { Icon: SiHackerone, filled: true },
-  { Icon: SiHackthebox, filled: true },
-  { Icon: SiTryhackme, filled: true },
-  { Icon: SiParrotsecurity, filled: true },
-  { Icon: SiApachejmeter, filled: true },
-  { Icon: SiFortinet, filled: true },
-  { Icon: SiPaloaltonetworks, filled: true },
-  { Icon: SiCisco, filled: true },
-  { Icon: SiJunipernetworks, filled: true },
-  { Icon: SiBroadcom, filled: true },
-  { Icon: SiSymantec, filled: true },
-  { Icon: SiNorton, filled: true },
-  { Icon: SiKaspersky, filled: true },
-  { Icon: SiAvast, filled: true },
-  { Icon: SiAvira, filled: true },
-  { Icon: SiMalwarebytes, filled: true },
-  { Icon: SiTrendmicro, filled: true },
-  { Icon: SiBitdefender, filled: true },
-  { Icon: SiFirewalla, filled: true },
-  { Icon: SiPfsense, filled: true },
-  { Icon: SiOpnsense, filled: true },
-  { Icon: SiMikrotik, filled: true },
-  { Icon: SiUbiquiti, filled: true },
-  { Icon: SiCloudflare, filled: true },
-  { Icon: SiCloudflareworkers, filled: true },
-  { Icon: SiOkta, filled: true },
-  { Icon: SiAuth0, filled: true },
-  { Icon: SiKeycloak, filled: true },
-  { Icon: SiAuthentik, filled: true },
-  { Icon: SiAuthelia, filled: true },
-  { Icon: SiFusionauth, filled: true },
-  { Icon: SiBetterauth, filled: true },
-  { Icon: SiWebauthn, filled: true },
-  { Icon: SiFidoalliance, filled: true },
-  { Icon: SiYubico, filled: true },
-  { Icon: SiGoogleauthenticator, filled: true },
-  { Icon: SiVault, filled: true },
-  { Icon: SiVaultwarden, filled: true },
-  { Icon: SiBitwarden, filled: true },
-  { Icon: SiKeepassxc, filled: true },
-  { Icon: SiLastpass, filled: true },
-  { Icon: SiDashlane, filled: true },
-  { Icon: SiKeeper, filled: true },
-  { Icon: SiEnpass, filled: true },
-  { Icon: SiCryptomator, filled: true },
-  { Icon: SiOpenvpn, filled: true },
-  { Icon: SiWireguard, filled: true },
-  { Icon: SiNordvpn, filled: true },
-  { Icon: SiProtonvpn, filled: true },
-  { Icon: SiExpressvpn, filled: true },
-  { Icon: SiTorproject, filled: true },
-  { Icon: SiTorbrowser, filled: true },
-  { Icon: SiProtonmail, filled: true },
-  { Icon: SiSignal, filled: true },
-  { Icon: SiDuckduckgo, filled: true },
-  { Icon: SiLetsencrypt, filled: true },
-  { Icon: SiOpenssl, filled: true },
-  { Icon: SiSpringsecurity, filled: true },
-  { Icon: SiDocker, filled: true },
-  { Icon: SiKubernetes, filled: true },
-  { Icon: SiHelm, filled: true },
-  { Icon: SiIstio, filled: true },
-  { Icon: SiLinkerd, filled: true },
-  { Icon: SiTerraform, filled: true },
-  { Icon: SiAnsible, filled: true },
-  { Icon: SiHashicorp, filled: true },
-  { Icon: SiConsul, filled: true },
-  { Icon: SiNomad, filled: true },
-  { Icon: SiPacker, filled: true },
-  { Icon: SiVagrant, filled: true },
-  { Icon: SiProxmox, filled: true },
-  { Icon: SiQemu, filled: true },
-  { Icon: SiVmware, filled: true },
-  { Icon: SiVirtualbox, filled: true },
-  { Icon: SiPrometheus, filled: true },
-  { Icon: SiGrafana, filled: true },
-  { Icon: SiElastic, filled: true },
-  { Icon: SiElasticstack, filled: true },
-  { Icon: SiElasticsearch, filled: true },
-  { Icon: SiOpensearch, filled: true },
-  { Icon: SiSplunk, filled: true },
-  { Icon: SiDatadog, filled: true },
-  { Icon: SiNewrelic, filled: true },
-  { Icon: SiSentry, filled: true },
-  { Icon: SiNginx, filled: true },
-  { Icon: SiNginxproxymanager, filled: true },
-  { Icon: SiApache, filled: true },
-  { Icon: SiCaddy, filled: true },
-  { Icon: SiTraefikproxy, filled: true },
-  { Icon: SiLinux, filled: true },
-  { Icon: SiUbuntu, filled: true },
-  { Icon: SiDebian, filled: true },
-  { Icon: SiRedhat, filled: true },
-  { Icon: SiGithub, filled: true },
-  { Icon: SiGithubactions, filled: true },
-  { Icon: SiGitlab, filled: true },
-  { Icon: SiJenkins, filled: true },
-  { Icon: SiPostman, filled: true },
-  { Icon: SiSwagger, filled: true },
-  { Icon: SiPostgresql, filled: true },
-  { Icon: SiMysql, filled: true },
-  { Icon: SiMongodb, filled: true },
-  { Icon: SiRedis, filled: true },
-  { Icon: SiSqlite, filled: true },
-  { Icon: SiPython, filled: true },
-  { Icon: SiGo, filled: true },
-  { Icon: SiRust, filled: true },
+  // Faint
+  { Icon: SiFedora, mag: 3 },
+  { Icon: SiRedhat, mag: 3 },
+  { Icon: SiNginxproxymanager, mag: 3 },
+  { Icon: SiCloudflareworkers, mag: 3 },
+  { Icon: SiVmware, mag: 3 },
+  { Icon: SiVirtualbox, mag: 3 },
+  { Icon: SiPortainer, mag: 3 },
+  { Icon: SiGit, mag: 3 },
+  { Icon: SiJavascript, mag: 3 },
+  { Icon: SiTypescript, mag: 3 },
+  { Icon: SiOpenjdk, mag: 3 },
+  { Icon: SiHtml5, mag: 3 },
+  { Icon: SiCss, mag: 3 },
+  { Icon: SiMarkdown, mag: 3 },
+  { Icon: SiMdx, mag: 3 },
+  { Icon: SiJson, mag: 3 },
+  { Icon: SiNodedotjs, mag: 3 },
+  { Icon: SiNpm, mag: 3 },
+  { Icon: SiMysql, mag: 3 },
+  { Icon: SiMariadb, mag: 3 },
+  { Icon: SiSqlite, mag: 3 },
+  { Icon: SiCursor, mag: 3 },
+  { Icon: SiAuthentik, mag: 3 },
+  { Icon: SiOpenid, mag: 3 },
+  { Icon: SiLetsencrypt, mag: 3 },
+  { Icon: SiGoogle, mag: 3 },
+  { Icon: SiGmail, mag: 3 },
+  { Icon: SiGoogledrive, mag: 3 },
+  { Icon: SiGoogleappsscript, mag: 3 },
+  { Icon: SiZoho, mag: 3 },
+  { Icon: SiResend, mag: 3 },
+  { Icon: SiMetabase, mag: 3 },
+  { Icon: SiSpeedtest, mag: 3 },
+  { Icon: SiRclone, mag: 3 },
+  { Icon: SiSyncthing, mag: 3 },
+  { Icon: SiFilezilla, mag: 3 },
+  { Icon: SiPaperlessngx, mag: 3 },
+  { Icon: SiPlex, mag: 3 },
+  { Icon: SiVikunja, mag: 3 },
+  { Icon: SiAutohotkey, mag: 3 },
+  { Icon: SiAnthropic, mag: 3 },
+  { Icon: SiGooglegemini, mag: 3 },
+  { Icon: SiLinear, mag: 3 },
+  { Icon: SiTodoist, mag: 3 },
+  { Icon: SiDavinciresolve, mag: 3 },
+  { Icon: SiObsstudio, mag: 3 },
+  { Icon: SiYoutube, mag: 3 },
+  { Icon: SiAnydesk, mag: 3 },
+  { Icon: SiRustdesk, mag: 3 },
 ];
 
-function buildFloatingIcons(seeds: IconSeed[]): FloatingIconSpec[] {
-  const count = seeds.length;
-  // Slightly denser than sqrt so icons cover the sky including the name area.
-  const cols = Math.ceil(Math.sqrt(count * 1.35));
-  const rows = Math.ceil(count / cols);
+/** Seeded PRNG so server and client render the same sky. */
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
-  return seeds.map((seed, index) => {
-    const col = index % cols;
-    const row = Math.floor(index / cols);
-    const jitterX = between(index, 1, -3.2, 3.2);
-    const jitterY = between(index, 2, -2.8, 2.8);
-    const left = Math.min(
-      97,
-      Math.max(3, ((col + 0.5) / cols) * 94 + 3 + jitterX)
-    );
-    const top = Math.min(
-      96,
-      Math.max(4, ((row + 0.5) / rows) * 90 + 4 + jitterY)
-    );
+const SIZE: Record<Magnitude, [number, number]> = {
+  1: [26, 34],
+  2: [16, 21],
+  3: [9, 13],
+};
+const LO: Record<Magnitude, [number, number]> = {
+  1: [0.07, 0.11],
+  2: [0.04, 0.08],
+  3: [0.02, 0.05],
+};
+const HI: Record<Magnitude, [number, number]> = {
+  1: [0.55, 0.75],
+  2: [0.45, 0.62],
+  3: [0.28, 0.42],
+};
 
-    const tone = TONES[Math.floor(between(index, 3, 0, TONES.length))]!;
-    const size = Math.round(between(index, 4, 11, 26));
-    const opacityMin = between(index, 5, 0.07, 0.16);
-    const opacityMax = Math.min(0.32, opacityMin + between(index, 6, 0.06, 0.14));
-    const rotate = between(index, 7, -10, 10);
-    const driftX = between(index, 8, -11, 11);
-    const driftY = between(index, 9, -12, -5);
-    const duration = between(index, 10, 42, 64);
-    const delay = between(index, 11, 0, 10);
-    // Most of the field glows — ~70% twinkle like lit stars.
-    const twinkle = hash01(index, 12) > 0.3;
-    const twinkleDuration = between(index, 13, 12, 22);
-    const twinkleDelay = between(index, 14, 0, 18);
-    // Keep denser field on mobile; hide only the smallest extras.
-    const desktopOnly = hash01(index, 15) > 0.55 && size < 15;
+/**
+ * Keep stars out of the core the name covers in every aspect ratio, and out
+ * of the strip at the foot where the project links sit.
+ */
+function inCore(x: number, y: number): boolean {
+  if (y > 89 && x > 14 && x < 86) return true;
+  const dx = (x - 50) / 30;
+  const dy = (y - 50) / 13;
+  return dx * dx + dy * dy < 1;
+}
 
+function buildSky(seeds: IconSeed[]): SkyIconSpec[] {
+  const rand = mulberry32(0xb1b);
+  const range = ([min, max]: [number, number]) => min + rand() * (max - min);
+  const placed: { x: number; y: number }[] = [];
+
+  // Seeds are ordered bright → faint, so the big stars spread out first.
+  return seeds.map(({ Icon, mag }) => {
+    // Best-candidate sampling: irregular like a real sky, but never clumped.
+    let best = { x: 50, y: 5 };
+    let bestDist = -1;
+    for (let c = 0; c < 14; c++) {
+      const x = 3 + rand() * 94;
+      const y = 4 + rand() * 92;
+      if (inCore(x, y)) continue;
+      let nearest = Infinity;
+      for (const p of placed) {
+        // Weight x by a typical landscape ratio so spacing looks even.
+        const d = Math.hypot((x - p.x) * 1.6, y - p.y);
+        if (d < nearest) nearest = d;
+      }
+      if (nearest > bestDist) {
+        bestDist = nearest;
+        best = { x, y };
+      }
+    }
+    placed.push(best);
+
+    const twinkleDuration = range(mag === 1 ? [11, 19] : [7, 17]);
     return {
-      Icon: seed.Icon,
-      top: `${top.toFixed(2)}%`,
-      left: `${left.toFixed(2)}%`,
-      size,
-      tone,
-      opacityMin: Number(opacityMin.toFixed(3)),
-      opacityMax: Number(opacityMax.toFixed(3)),
-      rotate: Number(rotate.toFixed(1)),
-      driftX: Math.round(driftX),
-      driftY: Math.round(driftY),
-      duration: Number(duration.toFixed(1)),
-      delay: Number(delay.toFixed(1)),
-      filled: seed.filled,
-      ...(twinkle
-        ? {
-            twinkle: true,
-            twinkleDuration: Number(twinkleDuration.toFixed(1)),
-            twinkleDelay: Number(twinkleDelay.toFixed(1)),
-          }
-        : {}),
-      ...(desktopOnly ? { desktopOnly: true } : {}),
+      Icon,
+      mag,
+      top: Number(best.y.toFixed(2)),
+      left: Number(best.x.toFixed(2)),
+      size: Math.round(range(SIZE[mag])),
+      lo: Number(range(LO[mag]).toFixed(3)),
+      hi: Number(range(HI[mag]).toFixed(3)),
+      rotate: Number(range([-8, 8]).toFixed(1)),
+      driftX: Math.round(range([-7, 7])),
+      driftY: Math.round(range([-7, 7])),
+      driftDuration: Number(range([46, 80]).toFixed(1)),
+      twinkleDuration: Number(twinkleDuration.toFixed(1)),
+      twinkleDelay: Number((-rand() * twinkleDuration).toFixed(1)),
+      wideOnly: mag === 3 && rand() > 0.6,
     };
   });
 }
 
-/** Full-viewport starfield; center-masked so icons stay behind the name. */
-export const LANDING_FLOATING_ICONS: FloatingIconSpec[] =
-  buildFloatingIcons(SECURITY_ICON_SEEDS);
+export const SKY_ICONS: SkyIconSpec[] = buildSky(SEEDS);
 
-export const LANDING_FLOATING_TONE_CLASS: Record<IconTone, string> = {
-  gold: "text-white/55 drop-shadow-[0_0_10px_rgba(255,255,255,0.14)]",
-  soft: "text-white/30",
-  muted: "text-white/20",
-};
+/**
+ * Plain point stars behind the icons, drawn as one element's box-shadow list
+ * (vw/vh offsets) so the dust costs a single static layer.
+ */
+export const SKY_DUST: string = (() => {
+  const rand = mulberry32(0x5eed);
+  return Array.from({ length: 120 }, () => {
+    const x = (rand() * 100).toFixed(2);
+    const y = (rand() * 100).toFixed(2);
+    const big = rand() > 0.86;
+    const alpha = (big ? 0.34 + rand() * 0.2 : 0.1 + rand() * 0.2).toFixed(2);
+    return `${x}vw ${y}vh 0 ${big ? "0.5px" : "0"} rgba(226, 228, 255, ${alpha})`;
+  }).join(", ");
+})();

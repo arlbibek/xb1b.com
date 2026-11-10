@@ -410,9 +410,36 @@ body {
 }
 
 .projects__label {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
+}
+
+/* "Opens in a new tab" — hangs off the label so the name stays centred.
+   Appears on hover/focus; on touch it rests dim, since there is no hover. */
+.projects__arrow {
+  position: absolute;
+  left: calc(100% + 0.55em);
+  top: 50%;
+  translate: -3px calc(-50% + 3px);
+  opacity: 0;
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects__link:hover .projects__arrow,
+.projects__link:focus-visible .projects__arrow {
+  opacity: 1;
+  translate: 0 -50%;
+}
+
+@media (hover: none) {
+  .projects__arrow {
+    opacity: 0.5;
+    translate: 0 -50%;
+  }
 }
 
 .projects__star {
@@ -538,6 +565,7 @@ body {
 
   .foot__email,
   .projects__link,
+  .projects__arrow,
   .projects__star,
   .projects__note {
     transition: none;

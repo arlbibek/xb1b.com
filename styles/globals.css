@@ -161,7 +161,9 @@ body {
   height: 78dvh;
   height: 78svh;
   font-weight: 700;
-  font-size: min(18vw, 30vh);
+  /* Width-bound in portrait (fills ~84vw), height-bound in landscape.
+     The .sky mask is derived from these numbers — change them together. */
+  font-size: min(27vw, 30vh);
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-align: center;
@@ -184,7 +186,7 @@ body {
   color: transparent;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 12px rgba(200, 190, 255, 0.22));
-  animation: landing-name-shine 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: landing-name-shine 14s ease-in-out infinite;
   will-change: background-position, filter;
 }
 
@@ -193,18 +195,17 @@ body {
   width: 100%;
 }
 
+/* One slow pass of light, then a long rest. */
 @keyframes landing-name-shine {
-  0%,
-  12% {
+  0% {
     background-position: 100% 50%;
     filter: drop-shadow(0 0 8px rgba(200, 190, 255, 0.14));
   }
-  45%,
-  55% {
+  18% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 18px rgba(220, 214, 255, 0.4));
+    filter: drop-shadow(0 0 14px rgba(220, 214, 255, 0.26));
   }
-  88%,
+  36%,
   100% {
     background-position: -100% 50%;
     filter: drop-shadow(0 0 8px rgba(200, 190, 255, 0.14));
@@ -266,216 +267,273 @@ body {
   }
 }
 
-/* Floating security icons — behind the name; center masked so they stay in the sky margins */
-.landing-floating-icons {
-  mask-image: radial-gradient(
-    ellipse 78% 72% at 50% 50%,
-    transparent 0%,
-    transparent 38%,
-    rgba(0, 0, 0, 0.2) 55%,
-    black 78%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 78% 72% at 50% 50%,
-    transparent 0%,
-    transparent 38%,
-    rgba(0, 0, 0, 0.2) 55%,
-    black 78%
-  );
-}
-
-/* Drift on the wrapper only — never put opacity here or the glow is multiplied down */
-@keyframes landing-icon-float {
-  0% {
-    transform: translate(-50%, -50%) rotate(var(--float-rotate, 0deg));
-  }
-  20% {
-    transform: translate(
-        calc(-50% + var(--float-drift-x, 4px)),
-        calc(-50% + var(--float-drift-y, -4px))
-      )
-      rotate(calc(var(--float-rotate, 0deg) + 2deg));
-  }
-  40% {
-    transform: translate(
-        calc(-50% + var(--float-drift-x-alt, 2px)),
-        calc(-50% - var(--float-drift-y-alt, 2px))
-      )
-      rotate(calc(var(--float-rotate, 0deg) - 0.5deg));
-  }
-  60% {
-    transform: translate(
-        calc(-50% - var(--float-drift-x-alt, 2px)),
-        calc(-50% + var(--float-drift-y-alt, -2px))
-      )
-      rotate(calc(var(--float-rotate, 0deg) - 2deg));
-  }
-  80% {
-    transform: translate(
-        calc(-50% - var(--float-drift-x, 4px)),
-        calc(-50% - var(--float-drift-y, -4px))
-      )
-      rotate(calc(var(--float-rotate, 0deg) + 0.8deg));
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(var(--float-rotate, 0deg));
-  }
-}
-
-@keyframes landing-icon-base-pulse {
-  0%,
-  100% {
-    opacity: var(--float-opacity-min, 0.14);
-  }
-  50% {
-    opacity: var(--float-opacity-max, 0.28);
-  }
-}
-
-@keyframes landing-icon-white-fade {
-  0%,
-  28%,
-  72%,
-  100% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.55;
-  }
-}
-
-.landing-floating-icon {
-  animation: landing-icon-float var(--float-duration, 44s) ease-in-out infinite;
-  animation-delay: var(--float-delay, 0s);
-  will-change: transform;
-}
-
-.landing-floating-icon-base {
-  display: inline-flex;
-  opacity: var(--float-opacity-min, 0.18);
-  animation: landing-icon-base-pulse var(--float-duration, 44s) ease-in-out
-    infinite;
-  animation-delay: var(--float-delay, 0s);
-  will-change: opacity;
-}
-
-.landing-floating-icon-glow {
+/* Sky — tool/technology icons as distant stars, behind the name.
+   The mask tracks the name's footprint (same min() as its font-size) so
+   stars fill whatever sky the type leaves free in any aspect ratio. */
+.sky {
   position: absolute;
   inset: 0;
-  display: inline-flex;
-  color: var(--fg);
-  opacity: 0;
-  pointer-events: none;
-  animation: landing-icon-white-fade var(--twinkle-duration, 16s) ease-in-out
-    infinite;
-  animation-delay: var(--twinkle-delay, 0s);
-  filter: drop-shadow(
-    0 0 12px color-mix(in srgb, var(--fg) 65%, transparent)
-  );
-  will-change: opacity;
-}
-
-.landing-floating-icon-glow svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Skill solar system — orbits of skill planets around the name (galaxy core) */
-.skill-system {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+  z-index: 0;
   overflow: hidden;
-  /* Center is the galaxy core (the name) — fade orbits out there so
-     skill labels dive behind it instead of overlapping the type */
+  pointer-events: none;
+  color: rgb(var(--mw-mist));
   mask-image: radial-gradient(
-    ellipse 80% 74% at 50% 50%,
-    transparent 0%,
-    transparent 34%,
-    black 62%
+    ellipse min(67vw, 75vh) min(35vw, 39vh) at 50% 50%,
+    transparent 72%,
+    black 118%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 80% 74% at 50% 50%,
-    transparent 0%,
-    transparent 34%,
-    black 62%
+    ellipse min(67vw, 75vh) min(35vw, 39vh) at 50% 50%,
+    transparent 72%,
+    black 118%
   );
 }
 
-.skill-orbit {
+.sky__dust {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  /* Elliptical ring: height = orbit size, width stretched (major axis).
-     --orbit-stretch is set from TS (ORBIT_STRETCH) — keep in sync. */
-  width: calc(var(--orbit-size, 100vmin) * var(--orbit-stretch, 1.3));
-  height: var(--orbit-size, 100vmin);
-  margin-left: calc(
-    var(--orbit-size, 100vmin) * var(--orbit-stretch, 1.3) / -2
-  );
-  margin-top: calc(var(--orbit-size, 100vmin) / -2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
   border-radius: 50%;
 }
 
-.skill-orbit--inner {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 24px rgba(167, 139, 250, 0.08);
-}
-
-.skill-node-pos {
+/* Drift lives on the wrapper, twinkle on the glyph — opacity on the wrapper
+   would multiply the twinkle down. */
+.sky__star {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  /* transform driven by rAF (translate to ellipse point + tangent rotate) */
-  will-change: transform;
+  translate: -50% -50%;
+  rotate: var(--rot, 0deg);
+  animation: sky-drift var(--drift, 60s) ease-in-out infinite alternate;
 }
 
-.skill-node {
-  position: relative;
+.sky__glyph {
   display: block;
-  width: 0;
-  height: 0;
+  opacity: var(--lo, 0.05);
+  animation: sky-twinkle var(--twinkle, 12s) ease-in-out
+    var(--twinkle-delay, 0s) infinite;
 }
 
-/* Text-only constellation label, centered on its orbit point */
-.skill-node-text {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(-50%, -50%);
-  display: inline-block;
-  white-space: nowrap;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  text-shadow:
-    0 0 8px rgba(0, 0, 0, 0.9),
-    0 1px 3px rgba(0, 0, 0, 0.9);
+.sky__star--m1 .sky__glyph {
+  filter: drop-shadow(0 0 8px rgba(var(--mw-mist), 0.35));
 }
 
-.skill-orbit--inner .skill-node-text {
-  color: rgba(255, 255, 255, 0.8);
+@keyframes sky-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(var(--dx, 4px), var(--dy, -4px), 0);
+  }
 }
 
-/* Crowded on small screens — outer shells hide, inner text shrinks */
+/* Out most of the time, then a slow swell and fade. */
+@keyframes sky-twinkle {
+  0%,
+  30%,
+  70%,
+  100% {
+    opacity: var(--lo, 0.05);
+  }
+  50% {
+    opacity: var(--hi, 0.5);
+  }
+}
+
 @media (max-width: 640px) {
-  .skill-orbit--outer .skill-node-pos {
+  .sky__star--wide {
     display: none;
   }
-  .skill-node-text {
-    font-size: 9px;
+}
+
+/* Foot of the sky — projects, then the email. One row in landscape; the
+   email drops to its own row in portrait, where width is the scarce axis. */
+.foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(env(safe-area-inset-bottom), 2.5svh);
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: clamp(0.5rem, 5vw, 4rem);
+}
+
+/* Projects — two named stars */
+.projects {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.5rem, 5vw, 4rem);
+}
+
+.foot__email,
+.projects__link {
+  position: relative;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects__link {
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+/* An address reads as an address in lowercase; quieter than the projects. */
+.foot__email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  color: rgba(var(--mw-mist), 0.56);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .foot__email {
+    flex-basis: 100%;
   }
+}
+
+.projects__link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(var(--mw-mist), 0.6);
+}
+
+.projects__label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+/* "Opens in a new tab" — hangs off the label so the name stays centred.
+   Appears on hover/focus; on touch it rests dim, since there is no hover. */
+.projects__arrow {
+  position: absolute;
+  left: calc(100% + 0.55em);
+  top: 50%;
+  translate: -3px calc(-50% + 3px);
+  opacity: 0;
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects__link:hover .projects__arrow,
+.projects__link:focus-visible .projects__arrow {
+  opacity: 1;
+  translate: 0 -50%;
+}
+
+@media (hover: none) {
+  .projects__arrow {
+    opacity: 0.5;
+    translate: 0 -50%;
+  }
+}
+
+.projects__star {
+  opacity: 0.55;
+  animation: sky-twinkle-soft 7s ease-in-out infinite;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects__link:nth-child(2) .projects__star {
+  animation-delay: -3.5s;
+}
+
+/* Offsets the trailing letter-space so the label looks centered on its star */
+.projects__name {
+  margin-right: -0.26em;
+}
+
+/* With a pointer the note stays out of the way until hover or focus… */
+.projects__note {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 6px);
+  translate: -50% 4px;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: rgba(var(--mw-mist), 0.62);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* …on touch there is no hover, so it sits under the name instead. */
+@media (hover: none) {
+  .projects__note {
+    position: static;
+    margin-top: 5px;
+    translate: none;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    opacity: 1;
+  }
+}
+
+.foot__email:hover,
+.foot__email:focus-visible,
+.projects__link:hover,
+.projects__link:focus-visible {
+  color: #fff;
+}
+
+.projects__link:hover .projects__star,
+.projects__link:focus-visible .projects__star {
+  opacity: 1;
+  animation: none;
+  transform: scale(1.25) rotate(45deg);
+}
+
+.projects__link:hover .projects__note,
+.projects__link:focus-visible .projects__note {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+@media (hover: none) {
+  .projects__link:hover .projects__note,
+  .projects__link:focus-visible .projects__note {
+    translate: none;
+  }
+}
+
+.foot__email:focus-visible,
+.projects__link:focus-visible {
+  outline: 1px solid rgba(var(--mw-violet), 0.8);
+  outline-offset: 2px;
+}
+
+@keyframes sky-twinkle-soft {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+::selection {
+  background: rgba(var(--mw-violet), 0.35);
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -495,13 +553,21 @@ body {
     filter: none;
   }
 
-  .landing-floating-icon,
-  .landing-floating-icon-base {
+  .sky__star,
+  .projects__star {
     animation: none;
   }
 
-  .landing-floating-icon-glow {
+  .sky__glyph {
     animation: none;
-    opacity: 0;
+    opacity: calc((var(--lo, 0.05) + var(--hi, 0.5)) * 0.4);
+  }
+
+  .foot__email,
+  .projects__link,
+  .projects__arrow,
+  .projects__star,
+  .projects__note {
+    transition: none;
   }
 }

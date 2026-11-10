@@ -35,7 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# bibeka.com.np
+# xb1b.com
 .env
 .vscode/
 *test*

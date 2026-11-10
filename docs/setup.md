@@ -8,7 +8,7 @@
 
 ```bash
 git clone https://github.com/arlbibek/bibeka.com.np.git
-cd bibeka.com.np
+cd bibeka.com.np # repo keeps its old name; the site is xb1b.com
 npm install
 npm run dev
 ```

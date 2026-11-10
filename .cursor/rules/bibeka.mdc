@@ -1,8 +1,11 @@
-# bibeka.com.np — agent constraints
+# xb1b.com — agent constraints
 
 ## Product
 
-- Personal site: single viewport-locked landing page with name "BIBEK / ARYAL".
+- Personal site at xb1b.com (formerly bibeka.com.np): single viewport-locked landing page with name "BIBEK / ARYAL".
+- Two projects are linked, quietly, at the foot of the page: tithi.xb1b.com and brahma.xb1b.com. They are separate deployments.
+- Contact is the email only (contact@xb1b.com), at the foot with the projects. No GitHub link on the page.
+- Owner facts for SEO/GEO live in `lib/site.ts`; keep them true.
 - No backend, no database, no Supabase, no auth, no forms unless explicitly requested.
 - Do not reintroduce `/projects`, `/echo`, `/click`, or similar multi-page portfolio features without an explicit ask.
 
@@ -15,7 +18,9 @@
 
 - Black night-sky background with a left-to-right Milky Way lavender glow band, white text.
 - Name covers ~80–90% of the viewport on all screen sizes; page must not scroll (`100dvh`/`100svh`, overflow hidden).
-- Floating security icons starfield (Trinity-style float + twinkle). Icons sit behind the name with a center mask so they do not overlay the text.
+- Subtle above all. Sky of tool/technology icons as distant stars: mostly dark, each slowly lighting up and going out; a few large, most small. Only tools Bibek actually uses. Icons sit behind the name with a mask so they do not overlay the text.
+- No orbiting or circling text around the name.
+- Favicon / app icons: white letter "B" on black.
 - Font stack: `"Helvetica Neue", Helvetica, Arial, sans-serif` (system; do not ship proprietary font files).
 
 ## Docs

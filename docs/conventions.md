@@ -3,7 +3,7 @@
 ## Code
 
 - TypeScript strict. No `any`.
-- Prefer Server Components. Client components only for interactive error recovery.
+- Prefer Server Components. Client components only for interactive error recovery — the landing ships no client JS.
 - Keep the landing visual system in `styles/globals.css` — do not recreate glow/name sizing with ad-hoc Tailwind on the home page.
 - Comment only non-obvious why.
 
@@ -14,8 +14,12 @@
 
 ## Gotchas
 
+- Facts about Bibek (role, expertise, project descriptions, email) live only in `lib/site.ts`. Do not restate them in components or metadata, and do not add claims that are not true of him — search engines and LLMs will quote them.
+- The `sr-only` summary on the home page must describe what is actually there. It exists because the sky is `aria-hidden`; it is not a place for keyword lists.
 - Helvetica Neue is not loaded via `next/font` or a CDN. Changing the font means updating the stack in `styles/globals.css` (and Tailwind `fontFamily.sans` if used).
 - Viewport units: prefer `dvh`/`svh` over `vh` so mobile browser chrome does not cause scroll.
-- Short-link redirects live in `next.config.js`, not as app routes.
-- Floating icon placements live in `lib/landing-floating-icons.ts`. Opacity must stay on the base/glow layers, not the float wrapper, or twinkle gets dimmed.
-- Keep the center radial mask on `.landing-floating-icons` so icons do not sit over the name.
+- Short-link redirects live in `next.config.js`, not as app routes. Keep them `permanent: false` so a target can be changed later.
+- Sky icons live in `lib/landing-floating-icons.ts`. Only add tools that are actually in `bibek - skills.md`. Drift animates the `.sky__star` wrapper and twinkle animates `.sky__glyph`; putting opacity on the wrapper dims the twinkle.
+- The `.sky` mask uses the same `min(vw, vh)` basis as the name's `font-size`. If the name's size changes, change the mask with it.
+- Stars are kept out of the bottom strip where the project links and email sit (`inCore` in `lib/landing-floating-icons.ts`).
+- Icons and the social card in `public/images/` are generated (white Nimbus Sans Bold "B" on black); regenerate all sizes together rather than editing one.

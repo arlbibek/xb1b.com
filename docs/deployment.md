@@ -6,7 +6,7 @@ Deployed on Vercel from the GitHub repository.
 
 ## Steps
 
-1. Push to the connected branch (typically `main`).
+1. Push to the connected branch (`master` is production; `dev` gets a preview deployment).
 2. Vercel runs `npm install` and `npm run build` (Next.js detected automatically).
 3. Production URL: [https://xb1b.com](https://xb1b.com).
 

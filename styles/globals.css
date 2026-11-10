@@ -161,7 +161,9 @@ body {
   height: 78dvh;
   height: 78svh;
   font-weight: 700;
-  font-size: min(18vw, 30vh);
+  /* Width-bound in portrait (fills ~84vw), height-bound in landscape.
+     The .sky mask is derived from these numbers — change them together. */
+  font-size: min(27vw, 30vh);
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-align: center;
@@ -184,7 +186,7 @@ body {
   color: transparent;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 12px rgba(200, 190, 255, 0.22));
-  animation: landing-name-shine 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: landing-name-shine 14s ease-in-out infinite;
   will-change: background-position, filter;
 }
 
@@ -193,18 +195,17 @@ body {
   width: 100%;
 }
 
+/* One slow pass of light, then a long rest. */
 @keyframes landing-name-shine {
-  0%,
-  12% {
+  0% {
     background-position: 100% 50%;
     filter: drop-shadow(0 0 8px rgba(200, 190, 255, 0.14));
   }
-  45%,
-  55% {
+  18% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 18px rgba(220, 214, 255, 0.4));
+    filter: drop-shadow(0 0 14px rgba(220, 214, 255, 0.26));
   }
-  88%,
+  36%,
   100% {
     background-position: -100% 50%;
     filter: drop-shadow(0 0 8px rgba(200, 190, 255, 0.14));
@@ -277,12 +278,12 @@ body {
   pointer-events: none;
   color: rgb(var(--mw-mist));
   mask-image: radial-gradient(
-    ellipse min(45vw, 75vh) min(23vw, 39vh) at 50% 50%,
+    ellipse min(67vw, 75vh) min(35vw, 39vh) at 50% 50%,
     transparent 72%,
     black 118%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse min(45vw, 75vh) min(23vw, 39vh) at 50% 50%,
+    ellipse min(67vw, 75vh) min(35vw, 39vh) at 50% 50%,
     transparent 72%,
     black 118%
   );
@@ -345,23 +346,31 @@ body {
   }
 }
 
-/* Projects — two named stars at the foot of the sky */
+/* Foot and head links share one quiet voice: small, wide-tracked caps. */
+.contact,
 .projects {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: max(env(safe-area-inset-bottom), 2.5svh);
   z-index: 3;
   display: flex;
   justify-content: center;
-  gap: clamp(1.5rem, 6vw, 4rem);
 }
 
+.contact {
+  top: max(env(safe-area-inset-top), 2.5svh);
+  gap: clamp(0.75rem, 4vw, 2.5rem);
+}
+
+/* Projects — two named stars at the foot of the sky */
+.projects {
+  bottom: max(env(safe-area-inset-bottom), 2.5svh);
+  gap: clamp(0.5rem, 5vw, 4rem);
+}
+
+.contact__link,
 .projects__link {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
   min-height: 44px;
   padding: 0 0.75rem;
   font-size: 11px;
@@ -369,13 +378,33 @@ body {
   letter-spacing: 0.26em;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgba(var(--mw-mist), 0.6);
   border-radius: 4px;
   transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  /* Balances the trailing letter-space so the label sits centred */
+  text-indent: 0.26em;
+  color: rgba(var(--mw-mist), 0.56);
+}
+
+.projects__link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(var(--mw-mist), 0.6);
+}
+
+.projects__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
 .projects__star {
-  flex: none;
   opacity: 0.55;
   animation: sky-twinkle-soft 7s ease-in-out infinite;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -390,6 +419,7 @@ body {
   margin-right: -0.26em;
 }
 
+/* With a pointer the note stays out of the way until hover or focus… */
 .projects__note {
   position: absolute;
   left: 50%;
@@ -407,6 +437,21 @@ body {
     translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* …on touch there is no hover, so it sits under the name instead. */
+@media (hover: none) {
+  .projects__note {
+    position: static;
+    margin-top: 5px;
+    translate: none;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    opacity: 1;
+  }
+}
+
+.contact__link:hover,
+.contact__link:focus-visible,
 .projects__link:hover,
 .projects__link:focus-visible {
   color: #fff;
@@ -425,6 +470,14 @@ body {
   translate: -50% 0;
 }
 
+@media (hover: none) {
+  .projects__link:hover .projects__note,
+  .projects__link:focus-visible .projects__note {
+    translate: none;
+  }
+}
+
+.contact__link:focus-visible,
 .projects__link:focus-visible {
   outline: 1px solid rgba(var(--mw-violet), 0.8);
   outline-offset: 2px;
@@ -472,6 +525,7 @@ body {
     opacity: calc((var(--lo, 0.05) + var(--hi, 0.5)) * 0.4);
   }
 
+  .contact__link,
   .projects__link,
   .projects__star,
   .projects__note {

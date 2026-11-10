@@ -6,9 +6,10 @@ export const metadata: Metadata = {
   description:
     "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
   metadataBase: new URL("https://xb1b.com"),
+  alternates: { canonical: "/" },
   manifest: "/manifest.json",
   authors: [{ name: "Bibek Aryal" }],
-  keywords: ["Bibek", "Aryal", "xb1b.com"],
+  keywords: ["Bibek Aryal", "xb1b", "Cybersecurity", "GRC", "ISO 27001"],
   openGraph: {
     siteName: "Bibek Aryal",
     type: "website",
@@ -17,6 +18,13 @@ export const metadata: Metadata = {
     description:
       "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
     images: [{ url: "/images/og.png", width: 1200, height: 630, alt: "Bibek Aryal" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bibek Aryal",
+    description:
+      "Bibek Aryal — Cybersecurity, GRC, ISO/IEC 27001, Cloud and DevOps.",
+    images: ["/images/og.png"],
   },
   icons: {
     icon: [

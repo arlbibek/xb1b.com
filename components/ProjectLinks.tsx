@@ -45,6 +45,7 @@ export default function ProjectLinks() {
           </a>
         ))}
       </nav>
+      <a className="foot__email" href="/support">Support my work</a>
       <a
         className="foot__email"
         href={`mailto:${EMAIL}`}

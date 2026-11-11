@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:support": "node --experimental-strip-types --test checks/support.mjs"
   },
   "dependencies": {
     "next": "^16.1.6",

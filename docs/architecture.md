@@ -21,8 +21,8 @@
 
 ## Key decisions
 
-- **No backend / no DB.** Config and static assets only. Do not introduce Supabase or other data stores without an explicit product decision.
-- **Single page.** Landing only. Other former routes (projects, echo, click) were removed.
+- **No database.** The support page has a server endpoint for Turnstile verification and private bank details; the landing remains static. Do not introduce a data store without an explicit product decision.
+- **Landing and support.** The landing stays viewport locked. /support and /ne/support are scrollable support pages; /api/support verifies human access. Other former routes (projects, echo, click) were removed.
 - **Viewport-fit landing.** The page uses `100dvh` / `100svh` with `overflow: hidden` so it never scrolls on any screen size.
 - **Name-first.** Typography fills most of the viewport. Brand is the entire composition; everything else stays quiet.
 - **Icons as stars.** Each icon rests almost dark, then slowly lights up and goes out on its own clock (negative animation delays, so they never pulse in unison). Placement is seeded best-candidate sampling: irregular like a sky, never clumped, identical on server and client. The sky is masked by an ellipse that tracks the name's footprint, so icons never sit over the type.

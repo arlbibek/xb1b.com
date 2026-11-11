@@ -22,11 +22,14 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run dev` | Local development server |
 | `npm run build` | Production build |
 | `npm run start` | Serve production build |
+| `npm run test:support` | Bank reveal security checks (Node 24 recommended) |
 | `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
 
 ## Environment variables
 
-None required. This is a static frontend with no secrets.
+The landing needs no environment variables. To enable the support page’s bank reveal,
+configure the public Turnstile site key, server secret, and allowed hostnames from
+[Support setup](./support.md). Rebuild after setting the public key.
 
 ## Dependencies of note
 

@@ -3,7 +3,7 @@
 ## Code
 
 - TypeScript strict. No `any`.
-- Prefer Server Components. Client components only for interactive error recovery — the landing ships no client JS.
+- Prefer Server Components. Client components only for interactive error recovery and the support reveal — the landing ships no client JS.
 - Keep the landing visual system in `styles/globals.css` — do not recreate glow/name sizing with ad-hoc Tailwind on the home page.
 - Comment only non-obvious why.
 

@@ -5,3 +5,5 @@
 - [Architecture](./architecture.md)
 - [Conventions](./conventions.md)
 - [Deployment](./deployment.md)
+
+- [Support page](./support.md)

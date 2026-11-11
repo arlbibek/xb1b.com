@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  outputFileTracingIncludes: {
+    "/api/support": ["./private/support/bank-qr.png"],
+  },
   // Short links are temporary (307) on purpose: browsers cache permanent
   // redirects indefinitely, so a moved target would never reach old visitors.
   async redirects() {

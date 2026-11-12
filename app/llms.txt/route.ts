@@ -6,6 +6,7 @@ import {
   SITE_SUMMARY,
   SITE_URL,
 } from "@/lib/site";
+import { OPEN_SOURCE } from "@/lib/projects";
 
 export const dynamic = "force-static";
 
@@ -16,7 +17,7 @@ export function GET() {
     "",
     `> ${SITE_SUMMARY}`,
     "",
-    `This is the personal site of ${SITE_NAME} (${SITE_URL}). It is a single page: his name, links to his projects, and a contact address.`,
+    `This is the personal site of ${SITE_NAME} (${SITE_URL}). The home page has his name, links to his projects and a contact address; /support lists his projects and ways to support them.`,
     "",
     "## Expertise",
     "",
@@ -25,6 +26,18 @@ export function GET() {
     "## Projects",
     "",
     ...PROJECTS.map((p) => `- [${p.name}](${p.href}): ${p.description}`),
+    "",
+    "## Open source",
+    "",
+    ...OPEN_SOURCE.map((p) =>
+      p.repo
+        ? `- [${p.name}](https://github.com/${p.repo}): ${p.note.en}${p.status === "archived" ? " (archived)" : ""}`
+        : `- ${p.name}: ${p.note.en} (coming soon)`,
+    ),
+    "",
+    "## Support",
+    "",
+    `- [Support my work](${SITE_URL}/support): bank transfer (NPR); more payment options coming soon.`,
     "",
     "## Work",
     "",

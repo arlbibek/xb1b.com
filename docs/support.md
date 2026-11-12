@@ -21,6 +21,17 @@ keys only in development, with localhost explicitly allowed if needed. Do not
 commit secrets. Add only trusted production/preview hostnames to both the
 widget and TURNSTILE_HOSTNAMES.
 
+## Page sections
+
+Below the bank card the page shows "More ways to support" (PayPal, GitHub
+Sponsors, eSewa, Khalti, UPI, crypto and others) as muted, non-clickable
+"Coming soon" chips in components/support/Gateways.tsx, then "What you're
+supporting": Tithi and Brahma as featured cards and open-source repositories
+from lib/projects.ts. Star counts come from the GitHub API at build time and
+revalidate daily (set GITHUB_TOKEN optionally to avoid rate limits); the static
+numbers in lib/projects.ts are the fallback. Private repositories (PocketBar)
+are listed without a source link.
+
 ## Data and privacy
 
 The private regenerated QR is private/support/bank-qr.png; its exact payload

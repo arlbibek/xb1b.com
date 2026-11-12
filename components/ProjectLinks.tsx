@@ -1,6 +1,6 @@
 import { EMAIL, PROJECTS } from "@/lib/site";
 
-/** Foot of the sky: two quiet "named stars", then the one way to reach me. */
+/** Foot of the sky: two quiet "named stars", then quieter ways to support or reach me. */
 export default function ProjectLinks() {
   return (
     <footer className="foot">
@@ -45,14 +45,21 @@ export default function ProjectLinks() {
           </a>
         ))}
       </nav>
-      <a className="foot__email" href="/support">Support my work</a>
-      <a
-        className="foot__email"
-        href={`mailto:${EMAIL}`}
-        aria-label={`Email ${EMAIL}`}
-      >
-        {EMAIL}
-      </a>
+      <div className="foot__contact">
+        <a className="foot__email" href="/support">
+          Support my work
+        </a>
+        <span className="foot__sep" aria-hidden="true">
+          ·
+        </span>
+        <a
+          className="foot__email"
+          href={`mailto:${EMAIL}`}
+          aria-label={`Email ${EMAIL}`}
+        >
+          {EMAIL}
+        </a>
+      </div>
     </footer>
   );
 }

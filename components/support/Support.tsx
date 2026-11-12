@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { SITE_NAME } from "@/lib/site";
 import { BankSupport } from "./BankSupport";
+import { Gateways } from "./Gateways";
+import { Projects } from "./Projects";
 
 const text = {
   en: {
@@ -41,8 +43,10 @@ export function Support({ locale }: { locale: "en" | "ne" }) {
         <div className="support-notes">
           <p>{x.note}</p>
           <p>{x.privacy} <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></p>
-          <p>{x.thanks}</p>
         </div>
+        <Gateways locale={locale} />
+        <Projects locale={locale} />
+        <p className="support-thanks">{x.thanks}</p>
       </div>
     </main>
   );
